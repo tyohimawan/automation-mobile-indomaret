@@ -76,11 +76,11 @@ When(/^user select Virtual Account BCA$/, async () => {
     await PembayaranScreen.tapVABCA();
 });
 
-Then(/^user tap button Bayar Sekarang$/, async () => {
+When(/^user tap button Bayar Sekarang$/, async () => {
     await PembayaranScreen.tapButtonKonfirmasiPembayaran();
 });
 
-Then(/^user check Total Pembayaran$/, async () => {
+When(/^user check Total Pembayaran$/, async () => {
     await CartScreen.tapButtonTotalPembayaran();
     const hargaBarang = await CartScreen.getHargaBarang();
     const hargaPengiriman = await CartScreen.getHargaPengiriman();

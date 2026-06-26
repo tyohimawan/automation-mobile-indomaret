@@ -67,13 +67,13 @@ class CartScreen {
     }
 
     public async tapButtonTotalPembayaran() {
-        const btnTotalPembayaran = await $(this.getSelector('BUTTON_TOTAL_PEMBEYARAN'));
+        const btnTotalPembayaran = await $(this.getSelector('BUTTON_TOTAL_PEMBAYARAN'));
         await btnTotalPembayaran.waitForDisplayed({ timeout: 10000 });
         await btnTotalPembayaran.click();
     }
 
     public async tapCloseButtonTotalPembayaran() {
-        const btnCloseTotalPembayaran = await $(this.getSelector('BUTTON_CLOSE_TOTAL_PEMBEYARAN'));
+        const btnCloseTotalPembayaran = await $(this.getSelector('BUTTON_CLOSE_TOTAL_PEMBAYARAN'));
         await btnCloseTotalPembayaran.waitForDisplayed({ timeout: 10000 });
         await btnCloseTotalPembayaran.click();
     }
