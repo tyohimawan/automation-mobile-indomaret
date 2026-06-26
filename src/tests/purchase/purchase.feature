@@ -4,9 +4,9 @@ Feature: Login and Purchase Item
 
     Given user tap button Akun
     And user tap button Masuk/Daftar
-    And user input Nomor Handphone atau Email with <Nomor Handphone>
+    And user input Nomor Handphone atau Email
     And user tap button Lanjut
-    And user input Kata Sandi with <Password>
+    And user input Kata Sandi
     And user tap button Masuk
     And user tap button Nanti Saja
     And user tap button Beranda
@@ -22,5 +22,30 @@ Feature: Login and Purchase Item
     Then user tap button Bayar Sekarang
 
     Examples:
-      | Nomor Handphone | Password   | Nama Item |
-      | <you-number-handphone>     | <your-password> | Ultramilk Coklat 125  |
+      | Nama Item             |
+      | Ultramilk Coklat 125  |
+
+  # --- Negative Test Scenarios ---
+
+  # @negative
+  # Scenario: User attempts login with incorrect password
+  #   Given user tap button Akun
+  #   And user tap button Masuk/Daftar
+  #   And user input Nomor Handphone atau Email
+  #   And user tap button Lanjut
+  #   And user input Kata Sandi
+  #   And user tap button Masuk
+  #   Then user should see error message "Kata sandi yang Anda masukkan salah"
+
+  # @negative
+  # Scenario: User attempts to purchase an out-of-stock item
+  #   Given user is logged in and on Beranda
+  #   And user search item with <out-of-stock-item>
+  #   And user tap first item
+  #   Then button Tambah ke Keranjang should be disabled or not displayed
+
+  # @negative
+  # Scenario: Total pembayaran does not match expected calculation
+  #   Given user has items in cart and selected shipping method
+  #   When user check Total Pembayaran
+  #   Then system should throw an error if harga barang + ongkir does not equal total bayar

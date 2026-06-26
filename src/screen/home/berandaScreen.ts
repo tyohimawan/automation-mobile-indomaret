@@ -5,8 +5,6 @@ import { berandaScreenSelectors } from '../../utils/selectors';
 
 type SelectorKey = keyof typeof berandaScreenSelectors;
 
-const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
-
 class BerandaScreen {
     private getSelector(selectorKey: SelectorKey) {
         return berandaScreenSelectors[selectorKey];
@@ -49,7 +47,8 @@ class BerandaScreen {
     }
 
     public async tapButtonNavAkun() {
-        await sleep(3000);
+        const btnNavBeranda = await $(this.getSelector('BUTTON_NAV_BERANDA_ID'));
+        await btnNavBeranda.waitForDisplayed({ timeout: 10000 });
         await this.scrollToTop();
         const btnNavAkun = await $(this.getSelector('BUTTON_NAV_AKUN_ID'));
         await btnNavAkun.waitForDisplayed({ timeout: 10000 });

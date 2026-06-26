@@ -1,3 +1,8 @@
+import * as dotenv from 'dotenv';
+dotenv.config();
+
+declare const browser: any;
+
 export const config: WebdriverIO.Config = {
     //
     // ====================
@@ -54,7 +59,7 @@ export const config: WebdriverIO.Config = {
     //
     capabilities: [{
         platformName: 'Android',
-        'appium:deviceName': '8881b8d1',
+        'appium:deviceName': process.env.DEVICE_ID || '8881b8d1',
         'appium:automationName': 'UiAutomator2',
         'appium:appPackage': 'com.indomaret.klikindomaret',
         'appium:appActivity': '.ngsCexmFBytBw',
@@ -245,8 +250,9 @@ export const config: WebdriverIO.Config = {
      * @param {ITestCaseHookParameter} world    world object containing information on pickle and test step
      * @param {object}                 context  Cucumber World object
      */
-    // beforeScenario: function (world, context) {
-    // },
+    beforeScenario: function (world) {
+        console.log(`\n▶ Running scenario: ${world.pickle.name}`);
+    },
     /**
      *
      * Runs before a Cucumber Step.
@@ -279,8 +285,12 @@ export const config: WebdriverIO.Config = {
      * @param {number}                 result.duration  duration of scenario in milliseconds
      * @param {object}                 context          Cucumber World object
      */
-    // afterScenario: function (world, result, context) {
-    // },
+    afterScenario: async function (world, result) {
+        if (!result.passed) {
+            const scenarioName = world.pickle.name.replace(/\s+/g, '_');
+            await browser.saveScreenshot(`./screenshots/failure_${scenarioName}.png`);
+        }
+    },
     /**
      *
      * Runs after a Cucumber Feature.
