@@ -8,6 +8,10 @@ class CartScreen {
         return keranjangScreenSelectors[selectorKey];
     }
 
+    private parseRupiah(text: string): number {
+        return parseInt(text.replace(/[^0-9]/g, ''), 10);
+    }
+
     public async tapButtonDelivery() {
         const btnDelivery = await $(this.getSelector('BUTTON_DELIVERY'));
         await btnDelivery.waitForDisplayed({ timeout: 10000 });
@@ -42,6 +46,36 @@ class CartScreen {
         const btnBeli = await $(this.getSelector('BUTTON_BELI'));
         await btnBeli.waitForDisplayed({ timeout: 10000 });
         await btnBeli.click();
+    }
+
+    public async getHargaBarang() {
+        const hargaBarangElement = await $(this.getSelector('HARGA_BARANG'));
+        await hargaBarangElement.waitForDisplayed({ timeout: 10000 });
+        return this.parseRupiah(await hargaBarangElement.getText());
+    }
+
+    public async getHargaPengiriman() {
+        const hargaPengirimanElement = await $(this.getSelector('HARGA_PENGIRIMAN'));
+        await hargaPengirimanElement.waitForDisplayed({ timeout: 10000 });
+        return this.parseRupiah(await hargaPengirimanElement.getText());
+    }
+
+    public async getTotalBayar() {
+        const totalBayarElement = await $(this.getSelector('TOTAL_PEMBAYARAN'));
+        await totalBayarElement.waitForDisplayed({ timeout: 10000 });
+        return this.parseRupiah(await totalBayarElement.getText());
+    }
+
+    public async tapButtonTotalPembayaran() {
+        const btnTotalPembayaran = await $(this.getSelector('BUTTON_TOTAL_PEMBEYARAN'));
+        await btnTotalPembayaran.waitForDisplayed({ timeout: 10000 });
+        await btnTotalPembayaran.click();
+    }
+
+    public async tapCloseButtonTotalPembayaran() {
+        const btnCloseTotalPembayaran = await $(this.getSelector('BUTTON_CLOSE_TOTAL_PEMBEYARAN'));
+        await btnCloseTotalPembayaran.waitForDisplayed({ timeout: 10000 });
+        await btnCloseTotalPembayaran.click();
     }
 }
 

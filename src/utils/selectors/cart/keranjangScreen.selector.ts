@@ -6,4 +6,10 @@ export const keranjangScreenSelectors = {
     BUTTON_KONFIRMASI_DELIVERY_METHOD: 'android=new UiSelector().resourceId("com.indomaret.klikindomaret:id/amb")',
 
     BUTTON_BELI: 'android=new UiSelector().resourceId("com.indomaret.klikindomaret:id/c1h")',
+
+    BUTTON_TOTAL_PEMBEYARAN: 'android=new UiSelector().resourceId("com.indomaret.klikindomaret:id/22e")',
+    BUTTON_CLOSE_TOTAL_PEMBEYARAN: 'android=new UiSelector().resourceId("com.indomaret.klikindomaret:id/928")',
+    HARGA_BARANG: 'android=new UiSelector().resourceId("com.indomaret.klikindomaret:id/61r")',
+    HARGA_PENGIRIMAN: 'android=new UiSelector().resourceId("com.indomaret.klikindomaret:id/b1d")',
+    TOTAL_PEMBAYARAN: 'android=new UiSelector().resourceId("com.indomaret.klikindomaret:id/c3f")',
 }

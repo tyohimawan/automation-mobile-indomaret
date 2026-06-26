@@ -7,6 +7,8 @@ export const pembayaranScreenSelectors = {
 
     BUTTON_SUBMIT_PEMBAYARAN: 'android=new UiSelector().resourceId("payButton")',
 
+    TEXT_TOTAL_BAYAR: 'android=new UiSelector().resourceId("com.indomaret.klikindomaret:id/4l6")',
+
     BUTTON_CEK_STATUS_PEMBAYARAN: 'android=new UiSelector().resourceId("com.indomaret.klikindomaret:id/amb")',
     BUTTON_BELANJA_LAGI: 'android=new UiSelector().resourceId("com.indomaret.klikindomaret:id/3r7")'
 }

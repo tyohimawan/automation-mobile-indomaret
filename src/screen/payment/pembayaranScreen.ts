@@ -1,6 +1,5 @@
 import { $ } from '@wdio/globals';
 
-declare const browser: any;
 import { pembayaranScreenSelectors } from '../../utils/selectors';
 
 type SelectorKey = keyof typeof pembayaranScreenSelectors;
@@ -11,11 +10,7 @@ class PembayaranScreen {
     }
 
     public async scrollDown() {
-        await browser.execute('mobile: scrollGesture', {
-            left: 0, top: 400, width: 1080, height: 1600,
-            direction: 'down',
-            percent: 0.5
-        });
+        await $('android=new UiScrollable(new UiSelector().scrollable(true)).setSwipeDeadZonePercentage(0.4).scrollForward()').waitForExist({ timeout: 10000 });
     }
 
     public async tapButtonKonfirmasiPembayaran() {

@@ -16,10 +16,11 @@ Feature: Login and Purchase Item
     And user tap button Cart
     And user select shipping method Instan
     And user tap button Konfirmasi
+    And user check Total Pembayaran
     And user tap button Beli
     And user select Virtual Account BCA
     Then user tap button Bayar Sekarang
 
     Examples:
       | Nomor Handphone | Password   | Nama Item |
-      | 089632105457     | Testing@123! | Ultramilk Coklat 125  |
+      | <you-number-handphone>     | <your-password> | Ultramilk Coklat 125  |

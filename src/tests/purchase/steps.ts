@@ -8,6 +8,7 @@ import CartScreen from '../../screen/cart/cartScreen';
 import PembayaranScreen from '../../screen/payment/pembayaranScreen';
 
 Given(/^user tap button Akun$/, async () => {
+    await BerandaScreen.closePopupIfPresent();
     await BerandaScreen.tapButtonNavAkun();
 });
 
@@ -37,11 +38,8 @@ When(/^user tap button Nanti Saja$/, async () => {
 
 When(/^user tap button Beranda$/, async () => {
     await BerandaScreen.tapButtonNavBeranda();
+    await BerandaScreen.closePopupIfPresent();
 });
-
-// When(/^user tap close popup banner$/, async () => {
-//     await BerandaScreen.tapButtonClosePopup();
-// });
 
 When(/^user search item with (.+)$/, async (value: string) => {
     await BerandaScreen.tapSearchProduct();
@@ -80,4 +78,18 @@ When(/^user select Virtual Account BCA$/, async () => {
 
 Then(/^user tap button Bayar Sekarang$/, async () => {
     await PembayaranScreen.tapButtonKonfirmasiPembayaran();
+});
+
+Then(/^user check Total Pembayaran$/, async () => {
+    await CartScreen.tapButtonTotalPembayaran();
+    const hargaBarang = await CartScreen.getHargaBarang();
+    const hargaPengiriman = await CartScreen.getHargaPengiriman();
+    const totalBayar = await CartScreen.getTotalBayar();
+
+    const totalHarga = hargaBarang + hargaPengiriman;
+
+    if (totalHarga !== totalBayar) {
+        throw new Error(`Total pembayaran tidak sesuai. Harga Barang: ${hargaBarang}, Ongkir: ${hargaPengiriman}, Total Bayar: ${totalBayar}`);
+    }
+    await CartScreen.tapCloseButtonTotalPembayaran();
 });
