@@ -1,0 +1,15 @@
+{
+    "platformName": "Android",
+    "appium:deviceName": "8881b8d1",
+    "appium:automationName": "UiAutomator2",
+    "appium:appPackage": "com.indomaret.klikindomaret",
+    "appium:appActivity": ".ngsCexmFBytBw",
+    "appium:noReset": true,
+    "appium:forceAppLaunch": true,
+    "appium:newCommandTimeout": 300,
+    "appium:uiautomator2ServerLaunchTimeout": 120000,
+    "appium:adbExecTimeout": 120000,
+    "appium:autoGrantPermissions": true,
+    "appium:skipDeviceInitialization": true,
+    "appium:ignoreHiddenApiPolicyError": true
+}
